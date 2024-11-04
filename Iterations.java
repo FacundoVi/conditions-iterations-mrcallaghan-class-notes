@@ -48,4 +48,41 @@ public class Iterations
         
         System.out.println("done");
     }
+    
+    public static void forExample()
+    {
+        /*
+         * for loop:
+         * 
+         *  three parts of the for statement/
+         *      1.initialization = executed once
+         *      2. condition = boolean expression evaluated at the start of the loop and each iteration
+         *      3.update the loop variable =- executed at the "end" of each iteration (before the condition is reevaluated)
+         */
+        
+        
+        for (int count = 1;     //initialization
+            count <= 5;         //condition
+            count++)            //update the loop variable
+        {
+            System.out.println(count);  //body
+        }
+        
+        System.out.println("done.");
+        /*
+         * variables declared withing the schope of the for statement are scoped to the statement and the loop body/
+         */
+        //System.out.println("the final value of count is: " + count); 
+    }
+    
+    public static void offByOne()
+    {
+        for (int i = 0;
+            i <= 5;
+            i++)
+        {
+            System.out.println("*");
+        }
+        System.out.println("done.");
+    }
 }
