@@ -109,4 +109,99 @@ public class Iterations
         
         System.out.println("done");
     }
+    
+    public static int sum()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+        int value;
+        
+        do
+        {
+            System.out.print("enter a positive integer (-1 to quit): ");
+            
+            /*
+             * Sentinel value (sentinel varible)
+             *  value (e.g. -1)n used to terminate the loop
+             *  often entered by a user
+             */
+            
+            value = s.nextInt();
+            if (value != -1)
+                sum += value;
+            
+        }
+        while(value != -1);
+        
+        return sum;
+    }
+    
+    public static int sumWithBreak()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+        int value;
+        
+        do
+        {
+            System.out.print("enter a positive integer (-1 to quit): ");
+            
+            /*
+             * Sentinel value (sentinel varible)
+             *  value (e.g. -1)n used to terminate the loop
+             *  often entered by a user
+             */
+            
+            value = s.nextInt();
+            if (value == -1){
+                /*
+                 * break keyword: inmediately exit the innermost loop
+                 */
+                break;
+            }
+            sum += value;
+        }
+        while(value != -1);
+        
+        return sum;
+    }
+    
+    public static int sumWithContinue()
+    {
+        Scanner s = new Scanner(System.in);
+        
+        int sum = 0;
+        int value = 0;
+        
+        do
+        {
+            System.out.print("enter a positive integer (-1 to quit): ");
+            /*
+             * The hasNextInt method of the scanner class returns true if the next token to be read is an
+             *  integer. otherwise, if returns fals, It does not consume the token. If there are no tokens in the stream, 
+             *      it wair until there are.
+             */
+            if(s.hasNextInt() == false)
+            {
+                System.out.println("... " + s.next() + " is not an integer; try again.");
+                /*
+                 * continue:
+                 *      1. immediately skip to the end of the innermost loop
+                 *      2. re-evaluate the loop conditionand continue with the bnext iteration if
+                 *          the condition is true.
+                 */
+                continue;
+            }
+            value = s.nextInt();
+            if (value != -1){
+                sum += value;
+            }
+            
+        }
+        while(value != -1);
+        
+        return sum;
+    }
 }
