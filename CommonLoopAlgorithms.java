@@ -65,6 +65,19 @@ public class CommonLoopAlgorithms
      */
     public static String promptUntilMatch()
     {
+        Scanner s = new Scanner(System.in);
+        String word = s.next();
+        do
+        {
+            System.out.print("enter a word that comes after north alphabetically: ");
+            word = s.next();
+            if(s.hasNextString() == false)
+            {
+                continue;
+            }
+            
+        }
+        while(word 
         return "";
     }
 
