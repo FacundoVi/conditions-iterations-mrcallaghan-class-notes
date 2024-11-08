@@ -65,19 +65,29 @@ public class CommonLoopAlgorithms
      */
     public static String promptUntilMatch()
     {
+        boolean tf = true;
         Scanner s = new Scanner(System.in);
-        String word = s.next();
         do
         {
             System.out.print("enter a word that comes after north alphabetically: ");
-            word = s.next();
-            if(s.hasNextString() == false)
+            String word = s.next();
+            int a = word.compareTo("north");
+            if (a <= 0 )
             {
-                continue;
+                System.out.println("word is less than or equal to north");
             }
-            
+            else if (a >0 && word.length() > 6)
+            {
+                System.out.println("CORRECT, " + word + " is greater than north alphabetically and more than 6.");
+                tf = false;
+                return word;
+            }
+            else
+            {
+                System.out.println("ERROR word is less than 6 characters.");
+            }
         }
-        while(word 
+        while(tf == true);
         return "";
     }
 
