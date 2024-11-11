@@ -67,6 +67,7 @@ public class CommonLoopAlgorithms
     {
         boolean tf = true;
         Scanner s = new Scanner(System.in);
+        
         do
         {
             System.out.print("enter a word that comes after north alphabetically: ");
