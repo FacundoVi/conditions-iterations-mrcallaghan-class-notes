@@ -13,11 +13,12 @@ public class Substrins
         System.out.print("enter a word: ");
         String w = s.next();
         int l = w.length();
-        for (int x = l; x <= 3;)
+        for (int x = 0; x < l; x++)
         {
-            for (int a =0; a <= 3 - l; a++)
+            for (int a =0; a < l - x; a++)
             {
-                System.out.println(w.substring(x, a));
+                System.out.println(w.substring(a, a + x + 1));
+                
             }
         }
     }
