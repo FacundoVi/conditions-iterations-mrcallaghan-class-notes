@@ -75,7 +75,8 @@ public class GerrymanderingComponent extends JComponent
         Scanner s = new Scanner(System.in);
         System.out.println("This program allows you to search through\ndata about congressional voting districts\nand determine whether a particular state is\ngerrymandered.");
         System.out.print("Which state do you want to look up? ");
-        String state = s.next();
+        String selectedState = s.next();
+        selectedState = selectedState.toLowerCase();
         
     }
     
@@ -102,7 +103,17 @@ public class GerrymanderingComponent extends JComponent
             
             // TODO: implement a looping structure to meet requirements
             //      specified in the above Javadoc comment
-            
+            while (votersScanner.hasNext())
+            {
+                /*String a = votersScanner.next();
+                a = a.toLowerCase();
+                int b = votersScanner.nextInt(); 
+                if (a == selectedState)
+                {
+                    eligibleVoters = b;
+                    foundState = true;
+                }*/
+            }
         }
         catch(FileNotFoundException e)
         {
