@@ -100,19 +100,28 @@ public class GerrymanderingComponent extends JComponent
             File votersFile = new File("eligible_voters.txt");
             Scanner votersScanner = new Scanner(votersFile);
             votersScanner.useDelimiter("[\r\n,]+");
-            
+            votersScanner.next();
             // TODO: implement a looping structure to meet requirements
             //      specified in the above Javadoc comment
             while (votersScanner.hasNext())
             {
-                /*String a = votersScanner.next();
-                a = a.toLowerCase();
-                int b = votersScanner.nextInt(); 
-                if (a == selectedState)
+                String a = "";
+                int b = 0;
+                if (votersScanner.hasNext())
+                {
+                    a = votersScanner.next();
+                    a = a.toLowerCase(); 
+                }
+                if(votersScanner.hasNextInt())
+                {
+                    b = votersScanner.nextInt(); 
+                }
+                if (a.equals(selectedState))
                 {
                     eligibleVoters = b;
                     foundState = true;
-                }*/
+                    return foundState;
+                }
             }
         }
         catch(FileNotFoundException e)
