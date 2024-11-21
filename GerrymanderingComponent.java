@@ -120,7 +120,6 @@ public class GerrymanderingComponent extends JComponent
                 {
                     eligibleVoters = b;
                     foundState = true;
-                    return foundState;
                 }
             }
         }
@@ -156,10 +155,38 @@ public class GerrymanderingComponent extends JComponent
             File districtFile = new File("districts.txt");
             Scanner districtsScanner = new Scanner(districtFile );
             districtsScanner.useDelimiter("[\r\n,]+");
-            
+            int y = 0;
+            int x = 0;
             // TODO: implement looping structures to meet requirements
             //      specified in the above Javadoc comment
-            
+            while (districtsScanner.hasNext()){
+                String q = districtsScanner.next();
+                q = q.toLowerCase();
+                while (districtsScanner.hasNextInt())
+                {
+                    if (districtsScanner.hasNextInt())
+                    {
+                        int e = districtsScanner.nextInt();
+                        int r = districtsScanner.nextInt();
+                        int t = districtsScanner.nextInt();
+                        numOfDistricts = e;
+                        x += r;
+                        y += t;
+                        addDistrictData(e, r, t);
+                        if (r > t)
+                        {
+                            this.totalWastedRepublicanVotes += 0;
+                            int a = ((r + t) / 2) + 1;
+                            this.totalWastedDemocraticVotes += r - a;
+                        }
+                        if (t > r)
+                        {
+                            int a = ((r + t) / 2) + 1;
+                            this.totalWastedRepublicanVotes += t - a;
+                        }
+                    }
+                }
+            }
             
 
             // TODO: implement algorithm to determine if the specified state 
