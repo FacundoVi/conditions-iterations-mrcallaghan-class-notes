@@ -75,8 +75,8 @@ public class GerrymanderingComponent extends JComponent
         Scanner s = new Scanner(System.in);
         System.out.println("This program allows you to search through\ndata about congressional voting districts\nand determine whether a particular state is\ngerrymandered.");
         System.out.print("Which state do you want to look up? ");
-        String selectedState = s.next();
-        selectedState = selectedState.toLowerCase();
+        this.selectedState = s.next();
+        this.selectedState = this.selectedState.toLowerCase();
         
     }
     
@@ -101,12 +101,12 @@ public class GerrymanderingComponent extends JComponent
             Scanner votersScanner = new Scanner(votersFile);
             votersScanner.useDelimiter("[\r\n,]+");
             votersScanner.next();
+            String a = "";
+            int b = 0;
             // TODO: implement a looping structure to meet requirements
             //      specified in the above Javadoc comment
             while (votersScanner.hasNext())
             {
-                String a = "";
-                int b = 0;
                 if (votersScanner.hasNext())
                 {
                     a = votersScanner.next();
@@ -116,11 +116,13 @@ public class GerrymanderingComponent extends JComponent
                 {
                     b = votersScanner.nextInt(); 
                 }
-                if (a.equals(selectedState))
+                if (a.equals(this.selectedState))
                 {
                     eligibleVoters = b;
                     foundState = true;
+                    return true;
                 }
+                
             }
         }
         catch(FileNotFoundException e)
@@ -175,14 +177,17 @@ public class GerrymanderingComponent extends JComponent
                         addDistrictData(e, r, t);
                         if (r > t)
                         {
-                            this.totalWastedRepublicanVotes += 0;
+                            this.totalWastedRepublicanVotes += t;
                             int a = ((r + t) / 2) + 1;
-                            this.totalWastedDemocraticVotes += r - a;
+                            a = r-a;
+                            this.totalWastedDemocraticVotes += a;
                         }
                         if (t > r)
                         {
+                            this.totalWastedDemocraticVotes += r;
                             int a = ((r + t) / 2) + 1;
-                            this.totalWastedRepublicanVotes += t - a;
+                            a = t - a;
+                            this.totalWastedRepublicanVotes += a;
                         }
                     }
                 }
@@ -191,7 +196,24 @@ public class GerrymanderingComponent extends JComponent
 
             // TODO: implement algorithm to determine if the specified state 
             //      is gerrymandered
-            
+            if (this.totalWastedDemocraticVotes > this.totalWastedRepublicanVotes)
+            {
+                int f = this.totalWastedDemocraticVotes - this.totalWastedRepublicanVotes;
+                double g = (this.totalWastedRepublicanVotes + this.totalWastedDemocraticVotes) * 0.07;
+                if (f > g)
+                {
+                    System.out.println("Gerrymandered benefiting the Republicans");
+                }
+            }
+            if (this.totalWastedRepublicanVotes > this.totalWastedDemocraticVotes)
+            {
+                int f = this.totalWastedRepublicanVotes - this.totalWastedDemocraticVotes;
+                double g = (this.totalWastedRepublicanVotes + this.totalWastedDemocraticVotes) * 0.07;
+                if (f > g)
+                {
+                    System.out.println("Gerrymandered benefiting the Democrats");
+                }
+            }
         }
         catch(FileNotFoundException e)
         {
