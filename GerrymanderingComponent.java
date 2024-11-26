@@ -164,35 +164,44 @@ public class GerrymanderingComponent extends JComponent
             while (districtsScanner.hasNext()){
                 String q = districtsScanner.next();
                 q = q.toLowerCase();
-                while (districtsScanner.hasNextInt())
+                if ( q.equals(this.selectedState))
                 {
-                    if (districtsScanner.hasNextInt())
+                    while (districtsScanner.hasNextInt())
                     {
-                        int e = districtsScanner.nextInt();
-                        int r = districtsScanner.nextInt();
-                        int t = districtsScanner.nextInt();
-                        numOfDistricts = e;
-                        x += r;
-                        y += t;
-                        addDistrictData(e, r, t);
-                        if (r > t)
+                        if (districtsScanner.hasNextInt())
                         {
-                            this.totalWastedRepublicanVotes += t;
-                            int a = ((r + t) / 2) + 1;
-                            a = r-a;
-                            this.totalWastedDemocraticVotes += a;
-                        }
-                        if (t > r)
-                        {
-                            this.totalWastedDemocraticVotes += r;
-                            int a = ((r + t) / 2) + 1;
-                            a = t - a;
-                            this.totalWastedRepublicanVotes += a;
+                            int e = districtsScanner.nextInt();
+                            int r = districtsScanner.nextInt();
+                            int t = districtsScanner.nextInt();
+                            numOfDistricts = e;
+                            x += r;
+                            y += t;
+                            addDistrictData(e, r, t);
+                            if (r > t)
+                            {
+                                this.totalWastedRepublicanVotes += t;
+                                int a = ((r + t) / 2) + 1;
+                                a = r-a;
+                                this.totalWastedDemocraticVotes += a;
+                            }
+                            if (t > r)
+                            {
+                                this.totalWastedDemocraticVotes += r;
+                                int a = ((r + t) / 2) + 1;
+                                a = t - a;
+                                this.totalWastedRepublicanVotes += a;
+                            }
                         }
                     }
                 }
+                else{
+                    while (districtsScanner.hasNextInt()){
+                        int e = districtsScanner.nextInt();
+                        int r = districtsScanner.nextInt();
+                        int t = districtsScanner.nextInt();
+                    }
+                }
             }
-            
 
             // TODO: implement algorithm to determine if the specified state 
             //      is gerrymandered
