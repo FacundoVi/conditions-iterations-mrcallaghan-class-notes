@@ -77,7 +77,13 @@ public class GerrymanderingComponent extends JComponent
         System.out.print("Which state do you want to look up? ");
         this.selectedState = s.next();
         this.selectedState = this.selectedState.toLowerCase();
-        
+        if (this.selectedState.equals("new"))
+        {
+            String h =s.next();
+            h.toLowerCase();
+            this.selectedState += " ";
+            this.selectedState += h;
+        }
     }
     
     
@@ -110,7 +116,14 @@ public class GerrymanderingComponent extends JComponent
                 if (votersScanner.hasNext())
                 {
                     a = votersScanner.next();
-                    a = a.toLowerCase(); 
+                    a = a.toLowerCase();
+                    if (a.equals("new"))
+                    {
+                        String c = votersScanner.next();
+                        c = c.toLowerCase();
+                        a += " ";
+                        a += c;
+                    }
                 }
                 if(votersScanner.hasNextInt())
                 {
@@ -164,6 +177,13 @@ public class GerrymanderingComponent extends JComponent
             while (districtsScanner.hasNext()){
                 String q = districtsScanner.next();
                 q = q.toLowerCase();
+                if (q.equals("new"))
+                {
+                    String u = districtsScanner.next();
+                    u = u.toLowerCase();
+                    q += " ";
+                    q += u;
+                }
                 if ( q.equals(this.selectedState))
                 {
                     while (districtsScanner.hasNextInt())
